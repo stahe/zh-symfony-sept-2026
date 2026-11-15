@@ -1,0 +1,1383 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="[Symfony] Web 框架分步入门">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/zh-symfony-sept-2026/%E6%95%B0%E6%8D%AE%E4%BD%9C%E7%94%A8%E5%9F%9F.html">
+      
+      
+        <link rel="prev" href="%E5%9B%BD%E9%99%85%E5%8C%96.html">
+      
+      
+        <link rel="next" href="%E8%AF%B7%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>6. 数据作用域 - [Symfony] Web 框架分步入门</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "[Symfony] Web 框架分步入门";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-数据作用域" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="[Symfony] Web 框架分步入门" class="md-header__button md-logo" aria-label="[Symfony] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            [Symfony] Web 框架分步入门
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. 数据作用域
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/zh-symfony-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="[Symfony] Web 框架分步入门" class="md-nav__button md-logo" aria-label="[Symfony] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    [Symfony] Web 框架分步入门
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/zh-symfony-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    欢迎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%AE%80%E4%BB%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%8A%A8%E4%BD%9C-%E8%B7%AF%E7%94%B1-%E5%93%8D%E5%BA%94.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 动作、路由、响应
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 动作模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%A7%86%E5%9B%BE%E5%8F%8A%E5%85%B6%E6%A8%A1%E5%9E%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 视图及其模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%9B%BD%E9%99%85%E5%8C%96.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 国际化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 数据作用域
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="%E6%95%B0%E6%8D%AE%E4%BD%9C%E7%94%A8%E5%9F%9F.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 数据作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-示例-23作用域" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. 示例 23：作用域
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1. 示例 23：作用域">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-对象srcservicecounterservicephp-和-requestinfophp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.1. 对象：src/Service/CounterService.php 和 RequestInfo.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-视图的全局变量configpackagestwigyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.2. 视图的全局变量：config/packages/twig.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-签名-cookiesrcservicesignedcookiesphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.3. 签名 Cookie：src/Service/SignedCookies.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#614-控制器srccontrollerscopescontrollerphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.4. 控制器：src/Controller/ScopesController.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#615-视图templatesscopesscopeshtmltwig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.5. 视图：templates/scopes/scopes.html.twig
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#616-执行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.6. 执行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%AF%B7%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 请求的生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 身份验证与授权
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 分层架构与数据访问
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%98%B6%E6%AE%B5%E6%80%A7%E7%BB%93%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 阶段性结论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6-rdvmedecins-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 案例研究：RdvMedecins 应用程序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%BB%93%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 结论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 附录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="6-数据作用域">6. <span style="color: #2e74b5">数据作用域</span></h1>
+<p>Web 应用程序同时为许多用户服务，而每个用户会发出许多请求。因此，数据可以在多个层级上共享，这些层级称为其<strong>作用域</strong>：</p>
+<ul>
+<li><strong>应用程序</strong>作用域：数据由所有用户在应用程序的整个生命周期内共享（例如医生列表）；</li>
+<li><strong>请求</strong>作用域：数据只在处理一个请求期间存在（视图的模型、为该请求识别出的已登录用户）；</li>
+<li><strong>会话</strong>作用域：数据专属于某个用户，并且必须在一个请求到下一个请求之间保留（所选语言、购物车）；</li>
+<li><strong>客户端</strong>作用域：存储在浏览器本身、即 Cookie 中的数据。</li>
+</ul>
+<p>在 <em>[PHP]</em> 中，这些作用域的行为比较特殊，因为应用程序在每个请求时都会重新构建（示例 01）：<strong>内存中没有任何东西能从一个请求留存到下一个请求</strong>。因此，任何需要比单个请求存活更久的数据都存储在 <em>[PHP]</em> 之外：缓存、数据库、文件，或客户端一侧。这就是所谓的“<em>无共享</em>”架构：每个请求由一个与处理其他请求的进程毫无共享的进程独立处理。这种方式有显著的优点：错误只影响单个请求，数据不会在用户之间泄漏，并且可以在负载均衡器之后运行多个相同的服务器，前提是它们共享同一个缓存和数据库。</p>
+<p>在 <em>[Symfony]</em> 中，每种作用域都有自己的容器：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>作用域</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>容器</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>生命周期</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">应用程序</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>缓存 </b>（服务 <i><b>[cache.app]</b></i>，示例 20），或数据库</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">所选的时长，或无限期</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">请求</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">容器的服务（处理请求期间每个类一个对象）、请求属性（示例 12）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">处理一个请求期间</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">会话</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>会话 </b>（<i><b>[$request-&gt;getSession()]</b></i>，示例 20），由服务器维护，并通过 Cookie 取回</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">默认情况下持续到浏览器关闭，并且最长不超过 <i>[PHP]</i> 会话的持续时间（默认为 24 分钟无活动）</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">客户端</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">一个 <b>Cookie </b>（<i><b>[Cookie::create]</b></i>，示例 22），明文形式</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Cookie 的过期时间</div></td></tr></table>
+
+<p><em>[Symfony]</em> 会话是一种<strong>服务器端</strong>会话，与 <em>[Java]</em> 的会话（<strong><em>[JSESSIONID]</em></strong>）或标准的 <em>[PHP]</em> 会话类似，它实际上借用了后者的机制和 Cookie（<strong><em>[PHPSESSID]</em></strong>）：其数据存储在服务器上（每个会话一个文件，使用我们示例中的配置），而浏览器只持有标识符——一个无法猜测的随机数。这与 <em>[Flask]</em> 不同，后者的整个会话存储在客户端一侧的签名 Cookie 中。</p>
+<h2 id="61-示例-23作用域">6.1. <span style="color: #2e74b5">示例 23：作用域</span></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>23-scopes/
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>├── config/
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>│   └── packages/
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>│       ├── framework.yaml
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>│       └── twig.yaml
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>├── src/
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>│   ├── Controller/
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>│   │   └── ScopesController.php
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>│   └── Service/
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>│       ├── CounterService.php
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>│       ├── SignedCookies.php
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>│       └── RequestInfo.php
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>├── templates/
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>│   └── scopes/
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>│       └── scopes.html.twig
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>└── ...
+</code></pre></div></td></tr></table></div>
+<p>文件 <strong><em>[config/packages/framework.yaml]</em></strong> 像示例 20 中一样配置会话和锁。</p>
+<h3 id="611-对象srcservicecounterservicephp-和-requestinfophp">6.1.1. <span style="color: #1f4d78">对象：src/Service/CounterService.php 和 RequestInfo.php</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1">// src/Service/CounterService.php：应用程序（APPLICATION）作用域，计数器由</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1">// 所有用户的所有请求共享，存储在缓存中（见示例 20）</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="k">use</span> <span class="nx">Psr\Cache\CacheItemPoolInterface</span><span class="p">;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="k">use</span> <span class="nx">Symfony\Component\Lock\LockFactory</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="k">class</span> <span class="nc">CounterService</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>        <span class="k">private</span> <span class="nx">CacheItemPoolInterface</span> <span class="nv">$cache</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>        <span class="k">private</span> <span class="nx">LockFactory</span> <span class="nv">$locks</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>    <span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>    <span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>    <span class="c1">// 在 [$key] 键下加一；“file”缓存不会以原子方式增加</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>    <span class="c1">// 数字：用锁来保护读取和写入</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">next</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$key</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>    <span class="p">{</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>        <span class="nv">$lock</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">locks</span><span class="o">-&gt;</span><span class="na">createLock</span><span class="p">(</span><span class="s2">"</span><span class="si">$key</span><span class="s2">-lock"</span><span class="p">);</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a>        <span class="nv">$lock</span><span class="o">-&gt;</span><span class="na">acquire</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>        <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a>            <span class="nv">$item</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">getItem</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a>            <span class="nv">$value</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">isHit</span><span class="p">()</span> <span class="o">?</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">()</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$value</span><span class="p">));</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a>            <span class="k">return</span> <span class="nv">$value</span><span class="p">;</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a>        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a>            <span class="nv">$lock</span><span class="o">-&gt;</span><span class="na">release</span><span class="p">();</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a>        <span class="p">}</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a>    <span class="p">}</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">increment</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a>    <span class="p">{</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">next</span><span class="p">(</span><span class="s1">'visits'</span><span class="p">);</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a>    <span class="p">}</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 12–16 行：该服务接收应用程序缓存和锁工厂（示例 20）；</li>
+<li>第 20–32 行：应用程序作用域的计数器：一个存储在缓存中某个键下的数字，每次调用时加 1。我们示例中的“文件”缓存不支持<strong>原子</strong>递增操作：必须先读取值、递增，然后再写入，而两个并发请求可能读取到相同的值——导致漏计一次访问。因此，一把锁（每个键一把）同时保护读操作和写操作；<strong><em>[finally]</em></strong> 块在所有情况下都会释放它，即使在第 28 行的 <strong><em>[return]</em></strong>  之后也是如此；</li>
+<li>第 34–37 行：访问计数器。</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">// src/Service/RequestInfo.php：请求（REQUEST）作用域，一个请求的信息</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="k">use</span> <span class="nx">DateTimeImmutable</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="k">class</span> <span class="nc">RequestInfo</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="p">{</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="k">public</span> <span class="k">readonly</span> <span class="nx">int</span> <span class="nv">$number</span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>    <span class="k">public</span> <span class="k">readonly</span> <span class="nx">string</span> <span class="nv">$start</span><span class="p">;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="c1">// 容器在第一次请求该类时创建该类的一个对象，然后</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>    <span class="c1">// 在该请求期间，将它交给所有请求它的对象</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">CounterService</span> <span class="nv">$counter</span><span class="p">)</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="p">{</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>        <span class="c1">// 每创建一个对象就有一个编号，取自所有请求共享的计数器</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">number</span> <span class="o">=</span> <span class="nv">$counter</span><span class="o">-&gt;</span><span class="na">next</span><span class="p">(</span><span class="s1">'instances'</span><span class="p">);</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>        <span class="c1">// 时间，精确到毫秒（v）</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">start</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">DateTimeImmutable</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">'H:i:s.v'</span><span class="p">);</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>    <span class="p">}</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 10–12 行：逐个声明为 <strong><em>[readonly]</em></strong> 的属性（而不是整个类）：它们只能由构造函数赋值一次；</li>
+<li>第 16–22 行：请求作用域的信息：一个数字，来自所有请求共享的计数器（前面那个服务，使用不同的键），以及请求时间，包括毫秒（<strong><em>[v]</em></strong> 格式）。构造函数从容器接收 <strong><em>[CounterService]</em></strong> ：服务可以像动作一样请求另一个服务。</li>
+</ul>
+<p>不需要任何配置：默认情况下，容器中的服务是<strong>共享的</strong> （<em>shared</em>）。容器在第一次请求时创建该对象，然后向所有后续请求返回同一个对象。在标准的 <em>[PHP]</em> 模式下，容器在每个请求时都会重新构建：因此共享服务就是请求作用域的对象。（你也可以通过 <strong><em>[shared: false]</em></strong> 选项，在 <strong><em>[services.yaml]</em></strong> 文件中要求每次注入时使用新对象。）对于为提高性能而在请求之间将应用程序保留在内存中的应用服务器，例如 <em>worker</em> 模式的 <em>[FrankenPHP]</em>，情况会有些细微差别：此时，服务由该进程处理的所有请求共享。<em>[Symfony]</em> 随后会在请求之间重置实现 <strong><em>[ResetInterface]</em></strong> 接口的服务；这些服务要负责确保不会在请求之间保留任何内容。</p>
+<h3 id="612-视图的全局变量configpackagestwigyaml">6.1.2. <span style="color: #1f4d78">视图的全局变量：config/packages/twig.yaml</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># config/packages/twig.yaml：TwigBundle 的配置</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="nt">twig</span><span class="p">:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="nt">default_path</span><span class="p">:</span><span class="w"> </span><span class="s">'%kernel.project_dir%/templates'</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="c1"># 视图的一个全局变量，它是一个服务（@ 表示服务）：</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="c1"># 当前请求的 RequestInfo 对象</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="nt">globals</span><span class="p">:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="s">'@App\Service\RequestInfo'</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 6–7 行：视图中的<strong>全局</strong>变量（示例 15）可以是一个服务：即其类名，前面加上 <strong><em>[@]</em></strong>。因此所有视图都可以访问变量 <strong><em>[info]</em></strong>，它是当前请求的 <strong><em>[RequestInfo]</em></strong> 对象。<em>[Twig]</em> 没有与 <strong><em>[@inject]</em></strong> 指令（来自 <em>[Blade]</em>）等价的东西：视图不会向容器请求任何东西；它接收的是提供给它的内容。</li>
+</ul>
+<h3 id="613-签名-cookiesrcservicesignedcookiesphp">6.1.3. <span style="color: #1f4d78">签名 Cookie：src/Service/SignedCookies.php</span></h3>
+<p>Cookie 是委托给客户端的一段数据，客户端可以读取和修改它。<em>[Laravel]</em> 会加密其 Cookie；<em>[Symfony]</em> 则不会。不过，要使 Cookie 值得信任，只需对其进行<strong>签名</strong>：其值以明文传输，但后面跟着一个只有服务器知道如何计算的签名，因为它依赖于一个密钥。被客户端修改的值不再具有正确的签名，服务器就会拒绝它。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span>
+<span class="normal"><a href="#__codelineno-4-31">31</a></span>
+<span class="normal"><a href="#__codelineno-4-32">32</a></span>
+<span class="normal"><a href="#__codelineno-4-33">33</a></span>
+<span class="normal"><a href="#__codelineno-4-34">34</a></span>
+<span class="normal"><a href="#__codelineno-4-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="c1">// src/Service/SignedCookies.php：已签名的 Cookie。值以明文传输，</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1">// 后面跟着一个只有服务器才会计算的签名：被客户端修改的值</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c1">// 将不再具有正确的签名，因而会被拒绝</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="k">use</span> <span class="nx">Symfony\Component\DependencyInjection\Attribute\Autowire</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="k">class</span> <span class="nc">SignedCookies</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="c1">// 签名的密钥：应用程序的密钥（APP_SECRET，.env 文件）</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(#[</span><span class="nd">Autowire</span><span class="p">(</span><span class="s1">'%kernel.secret%'</span><span class="p">)]</span> <span class="k">private</span> <span class="nx">string</span> <span class="nv">$secret</span><span class="p">)</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="p">{</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>    <span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a>    <span class="c1">// "5" -&gt; "5.3f1c..."：值，一个点，签名（值的 HMAC-SHA256）</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">sign</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>    <span class="p">{</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>        <span class="k">return</span> <span class="nv">$value</span><span class="o">.</span><span class="s1">'.'</span><span class="o">.</span><span class="nb">hash_hmac</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">,</span> <span class="nv">$value</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">secret</span><span class="p">);</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a>    <span class="p">}</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a>    <span class="c1">// 如果签名正确则返回该值，否则返回 null</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">verify</span><span class="p">(</span><span class="o">?</span><span class="nx">string</span> <span class="nv">$cookie</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a>    <span class="p">{</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$cookie</span> <span class="o">===</span> <span class="k">null</span> <span class="o">||</span> <span class="o">!</span> <span class="nb">str_contains</span><span class="p">(</span><span class="nv">$cookie</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a>            <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a>        <span class="p">}</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a>        <span class="c1">// strrpos：最后一个点的位置</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>        <span class="nv">$value</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$cookie</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">strrpos</span><span class="p">(</span><span class="nv">$cookie</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">));</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a>        <span class="c1">// hash_equals 以恒定时间比较两个字符串，不会向攻击者</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a>        <span class="c1">// 泄露有多少个字符是正确的</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33"></a>        <span class="k">return</span> <span class="nb">hash_equals</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">sign</span><span class="p">(</span><span class="nv">$value</span><span class="p">),</span> <span class="nv">$cookie</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$value</span> <span class="o">:</span> <span class="k">null</span><span class="p">;</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34"></a>    <span class="p">}</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 13 行：签名密钥是应用程序的密钥——文件 <strong><em>[APP_SECRET]</em></strong> 中的变量 <strong><em>[.env]</em></strong> （示例 01）——容器将其识别为<strong>参数</strong> <strong><em>[kernel.secret]</em></strong>。参数不是对象：属性 <strong><em>[#[Autowire]]</em></strong> 告诉容器要提供的值，其中 <strong><em>[%name%]</em></strong> 指代一个参数；</li>
+<li>第 18–21 行：签名是 <strong>HMAC</strong> （<em>Hash-based Message Authentication Code</em>）：使用密钥计算出的该值的 SHA-256 哈希，以十六进制写出。Cookie 包含值、一个句点，然后是签名；</li>
+<li>第 24–34 行：验证过程重新计算收到的值的签名，并把它与 Cookie 中的签名比较。<strong><em>[hash_equals]</em></strong> 比较两个字符串所用的时间与相同字符的数量无关：普通比较会在第一个不同的字符处停止，攻击者就可以通过测量响应时间，逐个字符地猜出签名。</li>
+</ul>
+<p>这就是 JWT 令牌背后的原理，下一章将把它用于身份验证。</p>
+<h3 id="614-控制器srccontrollerscopescontrollerphp">6.1.4. <span style="color: #1f4d78">控制器：src/Controller/ScopesController.php</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span>
+<span class="normal"><a href="#__codelineno-5-32">32</a></span>
+<span class="normal"><a href="#__codelineno-5-33">33</a></span>
+<span class="normal"><a href="#__codelineno-5-34">34</a></span>
+<span class="normal"><a href="#__codelineno-5-35">35</a></span>
+<span class="normal"><a href="#__codelineno-5-36">36</a></span>
+<span class="normal"><a href="#__codelineno-5-37">37</a></span>
+<span class="normal"><a href="#__codelineno-5-38">38</a></span>
+<span class="normal"><a href="#__codelineno-5-39">39</a></span>
+<span class="normal"><a href="#__codelineno-5-40">40</a></span>
+<span class="normal"><a href="#__codelineno-5-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="c1">// src/Controller/ScopesController.php：数据的四种作用域</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="k">use</span> <span class="nx">App\Service\CounterService</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="k">use</span> <span class="nx">App\Service\SignedCookies</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="k">use</span> <span class="nx">App\Service\RequestInfo</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\AbstractController</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Cookie</span><span class="p">;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="k">use</span> <span class="nx">Symfony\Component\Routing\Attribute\Route</span><span class="p">;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="k">class</span> <span class="nc">ScopesController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="p">{</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a>    <span class="c1">// 服务由容器提供（见示例 06）</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'scopes'</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">'GET'</span><span class="p">])]</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">display</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">CounterService</span> <span class="nv">$counter</span><span class="p">,</span> <span class="nx">RequestInfo</span> <span class="nv">$info</span><span class="p">,</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a>        <span class="nx">SignedCookies</span> <span class="nv">$cookies</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a>    <span class="p">{</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a>        <span class="c1">// 应用程序（APPLICATION）：共享计数器</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a>        <span class="nv">$total</span> <span class="o">=</span> <span class="nv">$counter</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">();</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a>        <span class="c1">// 会话（SESSION）：专属于此浏览器的数据，由服务器保存</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a>        <span class="c1">// （var/sessions 中的一个文件），通过会话 Cookie 重新找到</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a>        <span class="nv">$session</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getSession</span><span class="p">();</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a>        <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'visits'</span><span class="p">,</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'visits'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a>        <span class="c1">// 客户端（CLIENT）：由浏览器保存在 Cookie 中的数据，</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29"></a>        <span class="c1">// 每次请求都会发回服务器；一个是明文，另一个是已签名的</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30"></a>        <span class="nv">$myVisits</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">cookies</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'myVisits'</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31"></a>        <span class="nv">$mySignedVisits</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$cookies</span><span class="o">-&gt;</span><span class="na">verify</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">cookies</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'mySignedVisits'</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32"></a>        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">'scopes/scopes.html.twig'</span><span class="p">,</span> <span class="p">[</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33"></a>            <span class="s1">'total'</span> <span class="o">=&gt;</span> <span class="nv">$total</span><span class="p">,</span> <span class="s1">'instance'</span> <span class="o">=&gt;</span> <span class="nv">$info</span><span class="o">-&gt;</span><span class="na">number</span><span class="p">,</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34"></a>            <span class="s1">'sessionVisits'</span> <span class="o">=&gt;</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'visits'</span><span class="p">),</span> <span class="s1">'myVisits'</span> <span class="o">=&gt;</span> <span class="nv">$myVisits</span><span class="p">,</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35"></a>            <span class="s1">'mySignedVisits'</span> <span class="o">=&gt;</span> <span class="nv">$mySignedVisits</span><span class="p">,</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36"></a>        <span class="p">]);</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37"></a>        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">headers</span><span class="o">-&gt;</span><span class="na">setCookie</span><span class="p">(</span><span class="nx">Cookie</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">'myVisits'</span><span class="p">,</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$myVisits</span><span class="p">));</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38"></a>        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">headers</span><span class="o">-&gt;</span><span class="na">setCookie</span><span class="p">(</span><span class="nx">Cookie</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">'mySignedVisits'</span><span class="p">,</span> <span class="nv">$cookies</span><span class="o">-&gt;</span><span class="na">sign</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$mySignedVisits</span><span class="p">)));</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39"></a>        <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40"></a>    <span class="p">}</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 19–20 行：动作接收请求和容器提供的三个服务；</li>
+<li>第 23 行：应用程序作用域；</li>
+<li>第 26–27 行：会话作用域。<strong><em>[$request-&gt;getSession()]</em></strong> 返回用户的会话；<strong><em>[get(key, default)]</em></strong> 读取一个值，<strong><em>[set(key, value)]</em></strong> 写入一个值。<em>[Symfony]</em> 在请求结束时保存会话；</li>
+<li>第 30–31 行：客户端作用域，带有两个 Cookie。它们的值是浏览器提供的字符串，因此可能缺失或无效：转换 <strong><em>[(int)]</em></strong> 对于 <strong><em>[null]</em></strong> 或不是数字的文本返回 0。只有签名正确时，才会接受签名 Cookie 的值；</li>
+<li>第 32–39 行：要设置 Cookie，需要响应对象：<strong><em>[render]</em></strong> 构造它（示例 13），然后 <strong><em>[setCookie]</em></strong> 向其中添加 Cookie。如果没有过期日期，Cookie 会持续到浏览器关闭（这是浏览器所定义的“会话”Cookie）。</li>
+</ul>
+<h3 id="615-视图templatesscopesscopeshtmltwig">6.1.5. <span style="color: #1f4d78">视图：templates/scopes/scopes.html.twig</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span>
+<span class="normal"><a href="#__codelineno-6-24">24</a></span>
+<span class="normal"><a href="#__codelineno-6-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="p">&gt;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Scopes<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"{{ path('bootstrap', {file: 'css/bootstrap.min.css'}) }}"</span><span class="p">&gt;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container py-3"</span><span class="p">&gt;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"h3"</span><span class="p">&gt;</span>The scopes of data<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>    {# info：config/packages/twig.yaml 的全局变量，一个服务；在
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>       同一次请求期间，它与操作中的是同一个对象 #}
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>application: {{ total }} visit(s) to the site, all browsers combined<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>request: object no. {{ instance }} (no. {{ info.number }} in the view),
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a>        request received at {{ info.start }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a>      {# app.session：会话，在视图中也可以访问 #}
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>session: {{ sessionVisits }} visit(s) from this browser ({{ app.session.get('visits') }} in the view)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>client: {{ myVisits }} visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a>        {{ mySignedVisits }} (signed cookie)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 16 行：<strong><em>[info]</em></strong>，全局变量：在同一个请求期间，它与动作中的 <strong><em>[RequestInfo]</em></strong> 对象是同一个；视图显示它的编号，该编号必须与从动作收到的一致；</li>
+<li>第 19 行：在视图中也可以通过变量 <strong><em>[app.session]</em></strong> 访问会话。</li>
+</ul>
+<h3 id="616-执行">6.1.6. <span style="color: #1f4d78">执行</span></h3>
+<p>在浏览器中访问几次之后：</p>
+<p><img src="images/10000000000002BE0000010FEAB0664C.png" width="428" height="165" style="width:11.322cm;height:4.371cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE0000010FEAB0664C.png" /></p>
+<p>让我们使用 <em>[curl]</em> 来跟踪请求，它充当第一个浏览器，把 Cookie 存储在文件 <strong><em>[a.txt]</em></strong> 中：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>curl -i -c a.txt -b a.txt http://localhost:8000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>HTTP/1.1 200 OK
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>...
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>Set-Cookie: myVisits=1; path=/; httponly; samesite=lax
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>Set-Cookie: mySignedVisits=1.e50058404359cc9be2e65b8d9366aa98b7d7db4ca7ee576cfdffb6d1a1150d37; path=/; httponly; samesite=lax
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>Set-Cookie: PHPSESSID=32da14307b05da3847ea54b2ae3e6f77; path=/; httponly; samesite=lax
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>...
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>      &lt;li&gt;application: 1 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>      &lt;li&gt;request: object no. 1 (no. 1 in the view),
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>        request received at 09:48:29.888&lt;/li&gt;
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>            &lt;li&gt;session: 1 visit(s) from this browser (1 in the view)&lt;/li&gt;
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>      &lt;li&gt;client: 1 visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>        1 (signed cookie)&lt;/li&gt;
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>...
+</code></pre></div></td></tr></table></div>
+<p>响应设置了三个 Cookie。第一个 <strong><em>[myVisits]</em></strong> 以明文包含该值。第二个 <strong><em>[mySignedVisits]</em></strong> 包含相同的值，后面跟着一个句点及其签名。第三个 <strong><em>[PHPSESSID]</em></strong> 是会话 ID。会话数据存储在服务器上的一个文件 <strong><em>[var/sessions/dev/sess_32da14307b05da3847ea54b2ae3e6f77]</em></strong> 中，其名称与会话 ID 一致：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>_sf2_attributes|a:1:{s:6:"visits";i:1;}_sf2_meta|a:3:{s:1:"u";i:1790502509;s:1:"c";i:1790502509;s:1:"l";i:0;}
+</code></pre></div></td></tr></table></div>
+<p>在 <em>[PHP]</em> 的序列化格式中，我们可以看到一个只有一个键 <strong><em>[visits]</em></strong>、整数值为 1（<strong><em>[i:1]</em></strong>）的数组，后面是来自 <em>[Symfony]</em> 的有关会话的信息（创建和最后使用日期）。第二次访问，使用相同的 Cookie：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>curl -i -c a.txt -b a.txt http://localhost:8000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>...
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>Set-Cookie: myVisits=2; path=/; httponly; samesite=lax
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>Set-Cookie: mySignedVisits=2.4c7239f31c7e195c32dc5dcf2c7734ea05e6cb316eeab9a53239ab047db525ff; path=/; httponly; samesite=lax
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>...
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>      &lt;li&gt;application: 2 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>      &lt;li&gt;request: object no. 2 (no. 2 in the view),
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>        request received at 09:48:32.813&lt;/li&gt;
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>            &lt;li&gt;session: 2 visit(s) from this browser (2 in the view)&lt;/li&gt;
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>      &lt;li&gt;client: 2 visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>        2 (signed cookie)&lt;/li&gt;
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a>...
+</code></pre></div></td></tr></table></div>
+<p>会话已经存在：<strong><em>[PHPSESSID]</em></strong> Cookie 不会再被发回。第二个“浏览器”，使用它自己的 Cookie 文件，该文件最初是空的：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>curl -c b.txt -b b.txt http://localhost:8000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>      &lt;li&gt;application: 3 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>      &lt;li&gt;request: object no. 3 (no. 3 in the view),
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>        request received at 09:48:32.826&lt;/li&gt;
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>            &lt;li&gt;session: 1 visit(s) from this browser (1 in the view)&lt;/li&gt;
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>      &lt;li&gt;client: 1 visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>        1 (signed cookie)&lt;/li&gt;
+</code></pre></div></td></tr></table></div>
+<p>应用程序计数器继续累加；第二个浏览器的会话和 Cookie 则从 1 重新开始。每个请求都有自己的 <strong><em>[RequestInfo]</em></strong> 对象，并且在每个请求中，动作和视图看到的都是同一个对象。最后，一个恶意用户伪造了自己的 Cookie：<strong><em>[myVisits]</em></strong> 中有 1,000 次访问，<strong><em>[mySignedVisits]</em></strong> 中有 999 次（带有伪造的签名），以及一个他自己编造的会话 ID：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>curl -i -b "myVisits=1000;mySignedVisits=999.abc;PHPSESSID=abc" http://localhost:8000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span>
+<span class="normal"><a href="#__codelineno-15-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>...
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>Set-Cookie: PHPSESSID=1885ac965cf2dc862c4aecb994300956; path=/; httponly; samesite=lax
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>...
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>      &lt;li&gt;application: 4 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>      ...
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>            &lt;li&gt;session: 1 visit(s) from this browser (1 in the view)&lt;/li&gt;
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>      &lt;li&gt;client: 1001 visit(s) from this browser (clear-text cookie),
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>        1 (signed cookie)&lt;/li&gt;
+</code></pre></div></td></tr></table></div>
+<p>明文 Cookie 被原样接受：1,001 次访问。然而，Cookie <strong><em>[mySignedVisits]</em></strong> 没有正确的签名：它被忽略，就像不存在一样。把签名从另一个值复制过来（例如 <strong><em>[1]</em></strong> 的签名，放在值 <strong><em>[999]</em></strong> 旁边）同样无效：签名依赖于值。至于编造的会话 ID，它不对应任何现有的会话：<em>[Symfony]</em> 会拒绝它（这就是 <em>[PHP]</em> 会话的“严格”模式），并用新的 ID 创建一个新会话。因此，用户无法选择其他用户的会话。</p>
+<p>让我们记住这条规则：来自客户端的数据，只有在受到服务器的<strong>保护</strong> （像这里那样签名，或像身份验证一章中的令牌那样签名，或加密）时才值得信任；没有什么需要隐藏、且其值由服务器验证的数据（示例 22 中的语言）可以保持明文。签名保证值没有被篡改，但并不隐藏它：绝不能把机密托付给客户端，即使它已被签名。</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        本教程由 Anthropic 的 AI <strong>Claude</strong> 应 <strong>Serge Tahé</strong> 的请求编写，根据
+        <em>知识共享署名 – 非商业性使用 –
+        共享 3.0 未本地化版</em>的条款向公众开放。
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

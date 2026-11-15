@@ -1,0 +1,1283 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="[Symfony] Web 框架分步入门">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/zh-symfony-sept-2026/%E7%AE%80%E4%BB%8B.html">
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="%E5%8A%A8%E4%BD%9C-%E8%B7%AF%E7%94%B1-%E5%93%8D%E5%BA%94.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1. 简介 - [Symfony] Web 框架分步入门</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "[Symfony] Web 框架分步入门";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-简介" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="[Symfony] Web 框架分步入门" class="md-header__button md-logo" aria-label="[Symfony] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            [Symfony] Web 框架分步入门
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. 简介
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/zh-symfony-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="[Symfony] Web 框架分步入门" class="md-nav__button md-logo" aria-label="[Symfony] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    [Symfony] Web 框架分步入门
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/zh-symfony-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    欢迎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 简介
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="%E7%AE%80%E4%BB%8B.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-symfony-在-web-应用中的角色" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Symfony 在 Web 应用中的角色
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-所用工具" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. 所用工具
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-运行案例研究" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. 运行案例研究
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. 运行案例研究">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-安装-laragon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1. 安装 Laragon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-运行案例研究" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2. 运行案例研究
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. 示例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-文档内容" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. 文档内容
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%8A%A8%E4%BD%9C-%E8%B7%AF%E7%94%B1-%E5%93%8D%E5%BA%94.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 动作、路由、响应
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 动作模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%A7%86%E5%9B%BE%E5%8F%8A%E5%85%B6%E6%A8%A1%E5%9E%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 视图及其模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%9B%BD%E9%99%85%E5%8C%96.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 国际化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E4%BD%9C%E7%94%A8%E5%9F%9F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 数据作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%AF%B7%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 请求的生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 身份验证与授权
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 分层架构与数据访问
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%98%B6%E6%AE%B5%E6%80%A7%E7%BB%93%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 阶段性结论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6-rdvmedecins-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 案例研究：RdvMedecins 应用程序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%BB%93%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 结论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 附录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-简介">1. <span style="color: #2e74b5">简介</span></h1>
+<p>本文档的 PDF 在 |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQBOHOEHrdm_TKjJtG58kOk5ASvEaW6YKGujfw0CMgdPWYc?e=shc1py">此处</a>|。</p>
+<p>本文档的代码在 |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQAcH9slZdAOSbLoI6FscaigAaIzvR-VJzcoOS0uPofHmjY?e=tQTcLO">此处</a>|。</p>
+<p>本文档由 Anthropic 的 AI Claude 生成。它是继<a href="https://stahe.github.io/zh-laravel-sept-2026/"><u><span style="color: #0563c1">“[Laravel] Web 框架分步入门</span></u></a>”（2026 年）之后的文档，而该文档又继承了<a href="https://stahe.github.io/zh-flask-sept-2026/"><u><span style="color: #0563c1">“[Flask] Web 框架分步入门</span></u></a>”、<a href="https://stahe.github.io/zh-springmvc-sept-2026/"><u><span style="color: #0563c1">“[Spring MVC] Web 框架分步入门</span></u></a>”、“<a href="https://stahe.github.io/zh-aspnetcoremvc-sept-2026/"><u><span style="color: #0563c1">[ASP.NET Core MVC] Web 框架分步入门</span></u></a>”以及“<a href="https://stahe.github.io/zh-nestjs-html-sept-2026/"><u><span style="color: #0563c1">[NestJS] Web 框架分步入门</span></u></a>”（2026 年）。本文档仍处于<em>[PHP]</em> 的生态之内，但更换了框架：</p>
+<ul>
+<li><em>[Laravel]</em> 框架被<em>[Symfony]</em> 8.1 框架取代，仍然使用<em>[PHP]</em> 语言（8.4 或更高版本）；</li>
+<li><em>[Blade]</em> 视图被 <em>[Twig]</em> 视图取代，后者是<em>[Symfony]</em> 的视图引擎；</li>
+<li>使用<em>[Laravel]</em> 中的规则和表单请求（<strong><em>[FormRequest]</em></strong>）进行的验证，被<strong>Validator</strong> 组件（来自 <em>[Symfony]</em>，使用<strong>约束</strong>，以 <em>[PHP]</em> 属性的形式编写）以及其 <strong>Form</strong> 组件取代，后者用类来描述表单；</li>
+<li>守卫、中间件和 <strong><em>[Gate]</em></strong> 组件（来自 <em>[Laravel]</em> ）被 <strong>Security</strong> 组件（来自 <em>[Symfony]</em>）取代：防火墙、身份验证器、角色、密码哈希和尝试次数限制器，并辅以用于 JWT 令牌的 <em>[firebase/php-jwt]</em> 库；</li>
+<li>但 <em>[Symfony]</em> 中不存在中间件组件：<strong>事件监听器</strong>用于介入请求的处理过程；</li>
+<li>ORM <em>[Eloquent]</em> 被 <em>[Doctrine]</em> 取代，该 ORM 以 <em>[Symfony]</em> 为基础，而 Symfony 又以 <em>[MySQL]</em> 为基础。</li>
+</ul>
+<p>本文档紧密遵循 <em>[Laravel]</em> 课程的结构：先是众多小项目，每个项目只聚焦一个概念，然后是一个完整的案例研究——一个用于安排医疗诊所预约的 Web 应用——所有文件都有完整注释。这些示例的编号和涵盖的主题与 <em>[Laravel]</em>、<em>[Flask]</em>、<em>[Spring MVC]、</em>和 <em>[ASP.NET Core MVC]</em> 课程中相同：熟悉其中某门课程的读者可以逐例比较这些框架。不过这并非必需：本文档自成一体，不要求事先了解这些框架。仅有的先决条件是对 Web 编程（HTTP 协议、HTML 语言）的基本了解以及对 <em>[PHP]</em> 语言基础（变量、数组、函数、类）的掌握。课程 <a href="https://stahe.github.io/php7-juillet-2019/"><u><span style="color: #0563c1">“通过示例学习 PHP7 语言入门”</span></u></a>（2019 年）为需要先学习语言本身的读者介绍了该语言；这里用到的 <em>[PHP]</em> 8 的新特性（构造函数属性提升、<strong><em>[readonly]</em></strong> 类、属性、枚举、命名参数、空安全运算符等）会在首次出现时加以解释。</p>
+<h2 id="11-symfony-在-web-应用中的角色">1.1. <span style="color: #2e74b5">Symfony 在 Web 应用中的角色</span></h2>
+<p>Web 应用通常按层构建，每一层只与相邻的层通信：</p>
+<p><img src="images/10000000000003E80000014AA97880A9.png" width="605" height="200" style="width:16cm;height:5.279cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003E80000014AA97880A9.png" /></p>
+<ul>
+<li>Web 层接收来自浏览器的 HTTP 请求，并向其返回 HTML 页面。这一层正是 <em>[Symfony]</em> 帮助我们编写的部分；</li>
+<li>业务层包含应用的业务规则（例如“一位患者只能有一个即将到来的预约”）。它对 Web 一无所知：它同样可以为命令行应用提供服务；</li>
+<li>数据访问层（DAO 层，即 <em>Data Access Object</em>）负责读写数据库。我们将使用 <em>[Doctrine]</em>，这是与 <em>[Symfony]</em> 搭配的 ORM（<em>Object Relational Mapper</em>），它把表中的行映射为 <em>[PHP]</em> 对象。</li>
+</ul>
+<p>Web 层本身遵循 MVC（<em>Model-View-Controller</em>）模式：</p>
+<ul>
+<li>控制器（C）是一个 <em>[PHP]</em> 类，其方法称为<strong>动作</strong>，每个方法处理一种特定类型的请求（例如 <strong><em>[GET /schedule]</em></strong>）。动作读取请求参数，通过业务层处理请求，然后选择要显示的视图；</li>
+<li>模型（M）是动作传递给视图的数据集合；</li>
+<li>视图（V）是一个 <em>[Twig]</em> 文件（扩展名 <strong><em>[.html.twig]</em></strong>）：一个包含 <strong><em>[{{ ... }}]</em></strong> 表达式以及 <strong><em>[{% if %}]</em></strong>、<strong><em>[{% for %}]</em></strong>... 指令的 HTML 页面，<em>[Twig]</em> 引擎会用模型中的数据替换它们。</li>
+</ul>
+<p>关于术语的说明，以避免混淆：在 <em>[Symfony]</em> 中，表示数据库表的类称为<strong>实体</strong> （文件夹 <strong><em>[src/Entity]</em></strong>）。因此，在本文档中，术语<strong>“模型”</strong> 始终指<strong>视图模型</strong> （传递给视图的数据），或者在第 2 章中指<strong>动作模型</strong> （动作接收的数据）。术语<strong>“模板”</strong> 指其他页面所继承的公共视图（视图一章）。</p>
+<p>请求的处理按图中的编号步骤进行：</p>
+<ul>
+<li>1：浏览器发送一个 HTTP 请求，例如 <strong><em>[GET /schedule?doctorId=1&amp;day=2026-09-26]</em></strong>；</li>
+<li>2：Web 服务器接收请求，并通过 <em>[Symfony]</em> 应用的 <strong><em>[public/index.php]</em></strong> 文件把请求交给该应用。开发期间，该服务器是 <em>[PHP]</em> 自带的服务器，通过命令 <strong><em>[php -S localhost:8000 -t public]</em></strong> 启动；在生产环境中，则会是 <em>[nginx]</em> 或 <em>[Apache]</em> 这样的服务器，并与 <em>[PHP-FPM]</em> 搭配。文件 <strong><em>[public/index.php]</em></strong> 把请求交给应用的<strong>内核</strong> （<em>kernel</em>），内核让请求经过一系列<strong>事件</strong>：来自 <em>[Symfony]</em> 和应用本身的类，以及<strong>监听器</strong> （会话、安全、语言等）都会参与其中。其中一个监听器把请求的路径与应用的路由进行比较，并选出负责该请求的动作：这就是<strong>路由</strong>；</li>
+<li>3：动作向业务层请求所需的数据；必要时，业务层会联系 DAO 层，由 DAO 层用 SQL 查询 <em>[MySQL]</em> 数据库；</li>
+<li>4：动作构造视图的模型 M，并指示 <em>[Twig]</em> 引擎生成页面（方法 <strong><em>[render]</em></strong>）；</li>
+<li>5：视图生成的 HTML 页面就是动作的响应，由 <em>[Symfony]</em> 返回给浏览器。</li>
+</ul>
+<p><em>[Symfony]</em> 与 <em>[Laravel]</em> 并列，是 <em>[PHP]</em> 世界中两大 Web 框架之一。它免费且开源，由 Fabien Potencier（以及法国公司 SensioLabs）于 2005 年创建，凡是 <em>[PHP]</em> （<em>[Windows]</em>、<em>[Linux]</em>、<em>[macOS]</em>）能运行的地方它都能运行，而 <em>[PHP]</em> 几乎被所有 Web 托管服务商支持。<em>[Symfony]</em> 首先是约五十个<strong>组件</strong>的集合——它们是独立的库（HTTP 请求和响应、路由、控制台、表单、验证、安全等）——因口碑极佳而被其他项目采用：<em>[Laravel]</em> 本身就构建在其中若干组件之上，上一门课程的读者已经接触过它们。<em>[Symfony]</em> <strong>框架</strong>通过 <strong>Bundle</strong> （集成包）和负责创建应用对象的<strong>服务容器</strong> 来组装这些组件。与 <em>[Laravel]</em> 相比，<em>[Symfony]</em> 做出了明确的选择：没有外观和全局函数，而是通过依赖注入获得服务；在 YAML 文件中进行显式配置；用 <em>[PHP]</em> 属性（<strong><em>[#[Route]]</em></strong>、<strong><em>[#[Assert\NotBlank]]</em></strong>……）来描述代码；以及 ORM <em>[Doctrine]</em>，它把对象与其持久化分离开来。它是一个以严谨、文档和版本策略著称的框架：每六个月发布一个次要版本，每两年发布一个“长期支持”版本，并保证一个没有弃用警告的应用无需修改即可过渡到下一个主版本。<em>[Symfony]</em> 既可以创建向 <em>[JavaScript]</em> 客户端（<em>[Angular]</em>、<em>[React]</em>、<em>[Vue.js]</em>、[Flutter]...）返回 JSON 的服务器，也可以创建传统的 Web 应用，即由服务器生成 HTML 页面、浏览器只负责显示。本文档探讨的正是第二种用法。</p>
+<p><em>[PHP]</em> 的一个特点在很大程度上解释了<em>[Symfony]</em>：应用<strong>在每个请求时都会重新构建</strong>然后被丢弃（示例 01）。<em>[Symfony]</em> 通过把其配置一次性<strong>编译</strong>成 <em>[PHP]</em> 代码来弥补这一代价，这些代码存放在<strong>缓存</strong> （<strong><em>[var/cache]</em></strong> 文件夹）中。我们会经常回到这一点。</p>
+<h2 id="12-所用工具">1.2. <span style="color: #2e74b5">所用工具</span></h2>
+<p>这些示例是使用以下工具编写和测试的（它们的安装见附录）：</p>
+<ul>
+<li><em>[PHP]</em> 8.4（任何 8.4 或更高版本均可），带有扩展 <strong><em>[intl]</em></strong>、<strong><em>[mbstring]</em></strong>、<strong><em>[openssl]、</em></strong>和 <strong><em>[pdo_mysql]</em></strong>；</li>
+<li><em>[Composer]</em> 2，<em>[PHP]</em> 的库管理器；</li>
+<li>编辑器 <em>[Visual Studio Code]</em>，带有扩展 <em>[PHP Intelephense]</em> （代码分析）、<em>[Twig Language 2]</em> （视图）和 <em>[YAML]</em> （配置文件）；</li>
+<li>一款现代浏览器（<em>[Chrome]</em>、<em>[Firefox]</em>、<em>[Edge]</em>）；</li>
+<li>命令行工具 <em>[curl]</em>，它显示原始的 HTTP 响应（<em>[Windows]</em> 10 和 11 已内置）；</li>
+<li>数据库管理系统（SGBD）<em>[MySQL]</em> （或 <em>[MariaDB]</em>），例如 <em>[Laragon]</em> 在 <em>[Windows]</em> 下提供的那个，从数据访问一章开始使用，并用于案例研究。在 <em>[Windows]</em> 下，<em>[Laragon]</em> 可一次性安装 <em>[PHP]</em>、<em>[Composer]、</em>和 <em>[MySQL]</em> 。</li>
+</ul>
+<p><em>[Symfony]</em> 及其他库并不属于 <em>[PHP]</em>：<em>[Composer]</em> 在安装时会从 <em>[Packagist]</em> 仓库下载它们（因此当天必须连接互联网），并把它们放入 <strong><em>[vendor]</em></strong> 文件夹。每个项目在 <strong><em>[composer.json]</em></strong> 文件中描述其所用的库。下表列出了主要的库及所用版本：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[symfony/framework-bundle]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">框架：核心、路由、控制器、服务容器、配置、会话、缓存；它会安装所需的组件（<i><b>[symfony/http-foundation]</b></i>、<i><b>[symfony/http-kernel]</b></i>、<i><b>[symfony/routing]</b></i>、<i><b>[symfony/dependency-injection]</b></i>……）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">8.1.7</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[symfony/twig-bundle]</i>、<i>[twig/twig]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Twig] </i>视图（视图一章）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">8.1.7, 3.30.0</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[symfony/validator]</i>、<i>[symfony/form]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">验证（从示例 08 开始）和表单（从示例 17 开始）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">8.1.7</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[symfony/security-bundle]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">身份验证和授权（安全一章）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">8.1.7</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[symfony/translation]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">翻译（示例 09 和 22）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">8.1.7</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[doctrine/orm]</i>、<i>[doctrine/dbal]</i>、<i>[doctrine/doctrine-bundle]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">数据库访问（示例 28 和案例研究）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">3.7.2, 4.5.0, 3.3.2</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[firebase/php-jwt]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">JWT 令牌（身份验证一章）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">7.2.0</div></td></tr></table>
+
+<p><em>[Symfony]</em> 通常通过以下命令创建一个完整项目来安装：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>composer create-project symfony/skeleton my-project
+</code></pre></div></td></tr></table></div>
+<p>或者使用 <em>[Symfony]</em> 命令行工具（<strong><em>[symfony]</em></strong> 程序；见附录）：<strong><em>[symfony new my-project --webapp]</em></strong>。<em>[Composer]</em> 随后会下载 <strong>[Symfony]</strong> 应用的<em>骨架</em>，接着下载其各个库。骨架中还包含 <em>[Symfony Flex]</em>，这是 <em>[Composer]</em> 的一个插件，每当安装一个库（<strong><em>[composer require twig]</em></strong>）时，它就会根据在线发布的<strong>模板</strong> 写入该库自己的配置文件。真正启动一个项目就是这样做的。就学习而言，这种方式有一个缺点：文件会自己冒出来，而你不知道它们有什么用。因此，本文档中的示例从另一端开始：示例 01 是尽可能小的 <em>[Symfony]</em> 应用，每个示例只添加自己需要的文件，并手工编写和注释。结尾的案例研究遵循标准 <em>[Symfony]</em> 应用的结构。</p>
+<h2 id="13-运行案例研究">1.3. <span style="color: #2e74b5">运行案例研究</span></h2>
+<h3 id="131-安装-laragon">1.3.1. <span style="color: #4f81bd">安装 Laragon</span></h3>
+<p>案例研究需要 SGBD、MySQL、PHP 解释器，以及 PHP 和 [composer] 包安装器。Laragon 可以提供所有这些，甚至更多。截至 2026 年 9 月，Laragon 可在 URL 和 <em><mark style="background-color: #fff5ce">[Download Laragon – Fast &amp; Modern Dev Environment ]</mark></em> 获得。Laragon 自带的工具可让你安装 PHP 服务器以及 SGBD 和 <em><mark style="background-color: #fff5ce">[MySQL]</mark></em>：</p>
+<p><img src="images/10000000000006440000030C86481A8B.png" width="643" height="312" style="width:17cm;height:8.266cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006440000030C86481A8B.png" /></p>
+<ul>
+<li>在 [1] 中，是一个 Apache Web 服务器；</li>
+<li>在 [2] 中，是 SGBD 和 <em><mark style="background-color: #fff5ce">[MySQL]</mark></em>；</li>
+<li>在 [3] 中，是一个我们不会使用的消息工具；</li>
+<li>[4] 启动所有服务（Apache、<em><mark style="background-color: #fff5ce">[MySQL]</mark></em>、MailPit）；</li>
+<li>[5] 显示 URL 和 <em><mark style="background-color: #fff5ce">[http://localhost]</mark></em> 的网页。默认情况下，该 URL 指向 &lt;laragon-install&gt;\www 文件夹，其中 &lt;laragon-install&gt; 是 Laragon 的安装文件夹；</li>
+<li>在 [6] 中，启动 HeidiSQL 工具，它可以让你管理 MySQL 数据库。我们将使用该工具创建案例研究所用的数据库；</li>
+<li>在 [7] 中，打开一个终端；Laragon 所需的所有二进制文件都在 PATH 中；</li>
+<li>在 [8] 中，在与 URL 和 <em><mark style="background-color: #fff5ce">[http://localhost]</mark></em> 关联的文件夹中打开一个 Windows 资源管理器窗口；</li>
+</ul>
+<p>Laragon 的安装文件夹包含以下内容：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002DB00000324CA05B23E.png" width="314" height="345" style="display:inline-block; margin:4px;width:8.306cm;height:9.133cm;" class="odt-zoomable" data-zoom-src="images/10000000000002DB00000324CA05B23E.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>在 [1] 中，<em><mark style="background-color: #fff5ce">[bin]</mark></em> 文件夹包含许多应用：</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000329000004CE02139058.png" width="404" height="615" style="display:inline-block; margin:4px;width:10.7cm;height:16.27cm;" class="odt-zoomable" data-zoom-src="images/1000000000000329000004CE02139058.png" /></td></tr></table>
+
+<ul>
+<li>在 [1] 中，是 Apache Web 服务器；</li>
+<li>在 [2] 中，是一个命令行终端；</li>
+<li>在 [3] 中，是一个 <em><mark style="background-color: #fff5ce">[git]</mark></em> 客户端，可用于管理项目的不同版本；</li>
+<li>在 [4] 中，是一个数据库管理器；</li>
+<li>在 [5] 中，是一个邮件管理器；</li>
+<li>在 [6] 中，是 SGBD 和 <em><mark style="background-color: #fff5ce">[MySQL]</mark></em>；</li>
+<li>[7] 是另一个 Web 服务器；</li>
+<li>在 [8] 中，是 <em><mark style="background-color: #fff5ce">[node.js] </mark></em>，用于运行 JavaScript 脚本；</li>
+<li>[9] 是一个文本编辑器；</li>
+<li>[10] 是 PHP 解释器；</li>
+<li>[11] 是 <em><mark style="background-color: #fff5ce">[Python]</mark></em> 解释器；</li>
+<li>[12] 是一个缓存服务器；</li>
+</ul>
+<p>Laragon 提供了一套完整的开发环境。在本课程中，我们将使用：</p>
+<ul>
+<li>SGBD，<em><mark style="background-color: #fff5ce">[MySQL]，</mark></em>[6]，以及用于图形化管理的 <em><mark style="background-color: #fff5ce">[heidisql] </mark></em>工具；</li>
+<li>PHP 8.5 解释器；</li>
+<li>[composer] 包安装器；</li>
+</ul>
+<p>案例研究的 README 指出，必须在终端中输入以下命令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>composer install
+</code></pre></div>
+<p>以安装示例和案例研究所需的 PHP 包。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>php -S localhost:8000 -t public
+</code></pre></div>
+<p>以运行某个示例或案例研究。如果你在 VSCode 中使用 [PowerShell] 终端，会遇到以下问题：安装 Laragon 之后，Windows 机器的 PATH 目录中既没有 [composer] 也没有 [php]。因此，这些命令在 VSCode 终端中无法被识别。</p>
+<p>要把 [composer] 和 [php] 加入 Windows 机器的 PATH，请以 [administrator] 模式打开一个 PowerShell 终端，然后输入以下命令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[Environment]::SetEnvironmentVariable("Path",[Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\laragon\bin\composer","Machine")
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[Environment]::SetEnvironmentVariable("Path",[Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\laragon\bin\php\php-8.5.11-nts-Win32-vs17-x64","Machine")
+</code></pre></div>
+<p>请根据你的环境调整这两个高亮显示的路径。</p>
+<p>你需要重启 VSCode，这些更改才会生效。</p>
+<p>要创建案例研究所需的 <em><mark style="background-color: #fff5ce">[MySQL]</mark></em> 数据库，请按以下步骤操作：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000006440000030C352A3F89.png" width="503" height="244" style="display:inline-block; margin:4px;width:13.301cm;height:6.468cm;" class="odt-zoomable" data-zoom-src="images/10000000000006440000030C352A3F89.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>在 [1] 中，必须启动所有服务；</li>
+<li>在 [2] 中，<em><mark style="background-color: #fff5ce">[Database]</mark></em> 选项可让你管理数据库；</li>
+</ul>
+<p><em><mark style="background-color: #fff5ce">[Database]</mark></em> 选项会启动一个名为 HeidiSQL 的工具：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000008D2000003C91FBD37B4.png" width="621" height="266" style="display:inline-block; margin:4px;width:16.431cm;height:7.05cm;" class="odt-zoomable" data-zoom-src="images/10000000000008D2000003C91FBD37B4.png" /></td></tr></table>
+
+<ul>
+<li>在 [1] 中，可以选择各种 SGBD 选项。默认值是 SGBD MySQL。这是可以接受的；</li>
+<li>在 [2] 中，登录 HeidiSQL；</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003FD0000018A35CBA47C.png" width="357" height="138" style="display:inline-block; margin:4px;width:9.449cm;height:3.649cm;" class="odt-zoomable" data-zoom-src="images/10000000000003FD0000018A35CBA47C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002A4000001C70316A390.png" width="237" height="159" style="display:inline-block; margin:4px;width:6.26cm;height:4.21cm;" class="odt-zoomable" data-zoom-src="images/10000000000002A4000001C70316A390.png" /></td></tr></table>
+
+<ul>
+<li>在 [1-2] 中，运行 SQL 文件，然后选择 <em><mark style="background-color: #fff5ce">[dbrdvmedecins2.sql]</mark></em> 文件，你可以在 <em><mark style="background-color: #fff5ce">[symfony-sept-2026/rdvmedecins2-symfony/database] 文件夹中找到它</mark></em>：</li>
+</ul>
+<p><img src="images/10000000000001D7000001F897B5F6F5.png" width="198" height="212" style="width:5.226cm;height:5.6cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001D7000001F897B5F6F5.png" /></p>
+<p>运行 [3] 文件将创建案例研究所用的 <em><mark style="background-color: #fff5ce">[dbrdvmedecins2]</mark></em> 数据库。要查看它，请在 HeidiSQL 中按 F5 刷新显示：</p>
+<p><strong>编者注</strong>：以下截图显示的是名为 [dbrdvmedecins] 的数据库，而案例研究中的数据库名为 [dbrdvmedecins2]。这两个数据库几乎完全相同，因此我们认为没有必要重新截图。</p>
+<p><strong>注释结束</strong></p>
+<p><img src="images/10000000000002A50000031EFB250513.png" width="213" height="250" style="width:5.639cm;height:6.609cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002A50000031EFB250513.png" /></p>
+<p>数据库 <em><mark style="background-color: #fff5ce">[dbrdvmedecins] </mark></em>已创建。其内容如下：</p>
+<p><img src="images/100000000000053F00000271DC17B512.png" width="602" height="280" style="width:15.921cm;height:7.408cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000053F00000271DC17B512.png" /></p>
+<ul>
+<li>在 [1-3] 中，是表 <em><mark style="background-color: #fff5ce">[clients]</mark></em>；<ul>
+<li><em><mark style="background-color: #fff5ce">[id] </mark></em>是表的主键；</li>
+<li><em><mark style="background-color: #fff5ce">[version] </mark></em>是该行的版本号。每次修改该行时，这个数字都会递增；</li>
+<li><em><mark style="background-color: #fff5ce">[titre, nom, prenom] </mark></em>用于标识该人员；</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/100000000000052A0000026BD3179386.png" width="602" height="282" style="width:15.921cm;height:7.454cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000052A0000026BD3179386.png" /></p>
+<ul>
+<li>在 [1-3] 中，是表 <em><mark style="background-color: #fff5ce">[medecins]</mark></em>；<ul>
+<li><em><mark style="background-color: #fff5ce">[id] </mark></em>是表的主键；</li>
+<li><em><mark style="background-color: #fff5ce">[version] </mark></em>是该行的版本号；</li>
+<li><em><mark style="background-color: #fff5ce">[titre, nom, prenom] </mark></em>用于标识该人员；</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/10000000000005FE000002C6FB6943F4.png" width="602" height="278" style="width:15.921cm;height:7.368cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005FE000002C6FB6943F4.png" /></p>
+<ul>
+<li>在 [1-3] 中，是医生预约时间段的表：<ul>
+<li><em><mark style="background-color: #fff5ce">[id]</mark></em>：主键；</li>
+<li><em><mark style="background-color: #fff5ce">[version]</mark></em>：行版本号；</li>
+<li><em><mark style="background-color: #fff5ce">[id-medecin]</mark></em>：引用医生主键的外键；</li>
+<li><em><mark style="background-color: #fff5ce">[hdebut, mdebut]</mark></em>：预约开始时间的小时和分钟。因此，<em><mark style="background-color: #fff5ce">[8,20] </mark></em>表示上午 8:20。</li>
+<li><em><mark style="background-color: #fff5ce">[hfin, mfin]</mark></em>：诊疗结束时间的小时和分钟。</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/10000000000005EB0000024E23D6EF19.png" width="602" height="234" style="width:15.921cm;height:6.198cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005EB0000024E23D6EF19.png" /></p>
+<ul>
+<li>在 [1-3] 中，是已安排预约的 <em><mark style="background-color: #fff5ce">[rv]</mark></em> 表；<ul>
+<li><em><mark style="background-color: #fff5ce">[id]</mark></em>：主键；</li>
+<li><em><mark style="background-color: #fff5ce">[version]</mark></em>：版本号；</li>
+<li><em><mark style="background-color: #fff5ce">[jour]</mark></em>：预约日期；</li>
+<li><em><mark style="background-color: #fff5ce">[id_creneau]</mark></em>：引用预约时间段主键的外键。由于时间段与医生相关联，因此我们可以知道由哪位医生负责这次预约；</li>
+<li><em><mark style="background-color: #fff5ce">[id_client]</mark></em>：指向参加预约的患者编号（主键）的外键；</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/100000000000066300000266A61EA136.png" width="602" height="226" style="width:15.921cm;height:5.978cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000066300000266A61EA136.png" /></p>
+<ul>
+<li>在 [1-3] 中，表 <em><mark style="background-color: #fff5ce">[users] </mark></em>列出了有权使用 RdvMedecins 应用的用户；<ul>
+<li><em><mark style="background-color: #fff5ce">[id, version]</mark></em>：主键、版本号；</li>
+<li><em><mark style="background-color: #fff5ce">[login, password]</mark></em>：用户凭据；</li>
+<li><em><mark style="background-color: #fff5ce">[nom]</mark></em>：用户名称；</li>
+<li><em><mark style="background-color: #fff5ce">[role]</mark></em>：用户的角色。<em><mark style="background-color: #fff5ce">[ADMIN] </mark></em>拥有完整的访问权限。<em><mark style="background-color: #fff5ce">[USER] </mark></em>只有只读权限。该用户可以查看医生的日程，但不能安排或取消预约；</li>
+</ul>
+</li>
+</ul>
+<h3 id="132-运行案例研究">1.3.2. <span style="color: #4f81bd">运行案例研究</span></h3>
+<p><strong>审阅者注</strong>：我建议读者立即按下文所述运行案例研究。当你完全理解了这个预约安排应用的用途之后，请让你喜欢的 AI 按如下方式修改该应用：从现在起，每位医生将能够：</p>
+<ul>
+<li>设置自己在两个日期之间的预约时间段。这样他们就可以根据需要调整自己的日程；</li>
+<li>在某一天从日历中移除某些时间段——例如，当他们因个人原因无法出诊时；</li>
+</ul>
+<p>这一修改并不简单，因为它涉及数据库结构的变更。请让 AI 为你提供新的应用代码以及创建新数据库的 SQL 脚本。为此，你需要向它提供包含完整项目的 ZIP 文件以及旧数据库的 SQL 脚本。</p>
+<p>另外，我没有审阅 <strong>Claude</strong> 创建的这门课程。他之前已经制作过 [NestJS]、[ASP.NET Core MVC]、[Spring MVC] 和 [Flask] 课程，这些课程都很完美。我假定这一门也同样如此。如果你在理解某些内容时遇到问题，解决办法始终是一样的：请你喜欢的 AI 解释你不理解的地方。例如，<strong>Claude</strong> 就非常擅长这一点。你可能需要把你不理解的示例“上传”给他。</p>
+<p><strong>注释结束</strong>。</p>
+<p>本文档末尾的案例研究是一个完整的应用。读者很可能希望在深入了解框架的细节之前先看到它运行起来：下面介绍如何运行它。它位于 <strong><em>[rdvmedecins2-symfony]</em></strong> 文件夹中，与 <strong><em>[examples]</em></strong> 文件夹并列：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>symfony-sept-2026/
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>├── examples/
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>└── rdvmedecins2-symfony/
+</code></pre></div></td></tr></table></div>
+<p>你必须已安装 <em>[PHP]</em> （8.4 或更高版本）、<em>[Composer]</em>、<em>[Visual Studio Code]、</em>以及 <em>[MySQL]</em> （见附录）。然后：</p>
+<ul>
+<li><strong>通过运行</strong> <strong><em>[dbrdvmedecins2]</em></strong> <strong>数据库的</strong> 创建脚本 <strong><em>[rdvmedecins2-symfony/database/dbrdvmedecins2.sql]</em></strong> 来创建该数据库。使用 <em>[Laragon]</em> 时，打开 <em>[HeidiSQL]</em> 工具（Database 按钮），然后通过 File / Run SQL 菜单运行该脚本。在命令行中，在 <strong><em>[rdvmedecins2-symfony]</em></strong> 文件夹下执行：</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>mysql -u root &lt; database/dbrdvmedecins2.sql
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong>在</strong> <strong><em>[rdvmedecins2-symfony]</em></strong> <strong>文件夹</strong> 中用 <em>[Visual Studio Code]</em> 打开它（File 菜单 / Open Folder），然后打开一个终端（Terminal 菜单 / New Terminal）；</li>
+<li><strong>安装</strong>应用的<strong>库</strong>：<em>[Composer]</em> 读取文件 <strong><em>[composer.json]</em></strong>，下载 <em>[Symfony]</em> 及其他库，并把它们放入应用的 <strong><em>[vendor]</em></strong> 文件夹（需要几十秒）：</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>composer install
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong>检查与数据库的连接</strong>。应用连接到位于 <em>[MySQL]</em> 的 <strong><em>[127.0.0.1]</em></strong>，端口 3306，使用用户 <strong><em>[root]</em></strong> <strong>且没有密码</strong> （即 <em>[Laragon]</em> 的默认设置）。如果你的 <strong><em>[root]</em></strong> 账户有密码，请把它填写到应用的 <strong><em>[.env]</em></strong> 文件中，在 <strong><em>[DATABASE_URL]</em></strong> 这一行：<strong><em>[mysql://root:myPassword@127.0.0.1:3306/dbrdvmedecins2...]</em></strong>；</li>
+<li><strong>运行应用</strong>：</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>php -S localhost:8081 -t public
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><em>[PHP]</em> 显示：</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>[Sun Sep 27 18:40:12 2026] PHP 8.4.21 Development Server (http://localhost:8081) started
+</code></pre></div></td></tr></table></div>
+<p>开发服务器在本机的 8081 端口上监听（<strong><em>[localhost]</em></strong>）。收到的每个请求都会记录在控制台中，同时还有来自 <em>[Symfony]</em> 的消息（选中的路由、发送给数据库的 SQL 命令）；</p>
+<ul>
+<li><strong>在浏览器中打开地址</strong> <strong><em>[http://localhost:8081]</em></strong> ：</li>
+</ul>
+<p><img src="images/10000000000003EC000003B4D911DA0C.png" width="605" height="571" style="width:16cm;height:15.108cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003EC000003B4D911DA0C.png" /></p>
+<ul>
+<li>使用某个演示账户登录，其密码与用户名相同：<strong><em>[admin]</em></strong> （管理员）、<strong><em>[pelissier]</em></strong>、<strong><em>[tatou]</em></strong>、<strong><em>[dupont]</em></strong> （医生）、<strong><em>[martin]</em></strong>、<strong><em>[durand]</em></strong>、<strong><em>[bistrou]</em></strong>、<strong><em>[german]</em></strong> （患者）。你还必须输入图片中的字符，大小写均可。</li>
+</ul>
+<p>一个 <em>[PHP]</em> 应用在启动时并不会读取数据库：连接错误只会在第一个查询数据库的页面上出现，即在建立连接时。<em>[Symfony]</em> 随后会显示其详细的错误页面，并把错误记录到服务器控制台。如果消息是 <strong><em>[SQLSTATE[HY000] [2002] Connection refused]</em></strong>，则表示 <em>[MySQL]</em> 尚未启动；如果是 <strong><em>[[1045] Access denied for user &#x27;root&#x27;@&#x27;localhost&#x27;]</em></strong>，则表示密码不正确；如果是 <strong><em>[[1049] Unknown database &#x27;dbrdvmedecins2&#x27;]</em></strong>，则表示 SQL 脚本没有执行；如果是 <strong><em>[could not find driver]</em></strong>，则表示 <strong><em>[pdo_mysql]</em></strong> 扩展在 <em>[PHP]</em> 中没有启用。如果页面显示 <strong><em>[Failed opening required &#x27;.../vendor/autoload_runtime.php&#x27;]</em></strong>，则表示 <strong><em>[composer install]</em></strong> 没有执行；如果 <strong><em>[php -S]</em></strong> 命令失败并显示消息 <strong><em>[Failed to listen on localhost:8081 (reason: Address already in use)]</em></strong>，则表示 8081 端口已被占用（例如被应用的另一个版本占用）。应用的 <strong><em>[README.md]</em></strong> 文件还描述了其他情形。请在终端中使用 <strong><em>[Ctrl-C]</em></strong> 停止应用。</p>
+<p>文档末尾的案例研究演示了如何使用该应用，然后逐个解释它的每个文件。</p>
+<h2 id="14-示例">1.4. <span style="color: #2e74b5">示例</span></h2>
+<p>示例存放在 <strong><em>[examples]</em></strong> 文件夹中，每个示例一个子文件夹：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>examples/
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>├── 01-structure/
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>├── 02-routing/
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>├── ...
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>├── 28-layers/
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>├── common/
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>│   ├── bootstrap/
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>│   ├── BootstrapController.php
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a>│   └── README.md
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a>└── composer.json
+</code></pre></div></td></tr></table></div>
+<p>每个示例都是一个可独立运行的小应用（<em>[Symfony]</em>）。所有示例使用相同的库，它们在文件 <strong><em>[examples/composer.json]</em></strong> 中描述：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span>
+<span class="normal"><a href="#__codelineno-11-27">27</a></span>
+<span class="normal"><a href="#__codelineno-11-28">28</a></span>
+<span class="normal"><a href="#__codelineno-11-29">29</a></span>
+<span class="normal"><a href="#__codelineno-11-30">30</a></span>
+<span class="normal"><a href="#__codelineno-11-31">31</a></span>
+<span class="normal"><a href="#__codelineno-11-32">32</a></span>
+<span class="normal"><a href="#__codelineno-11-33">33</a></span>
+<span class="normal"><a href="#__codelineno-11-34">34</a></span>
+<span class="normal"><a href="#__codelineno-11-35">35</a></span>
+<span class="normal"><a href="#__codelineno-11-36">36</a></span>
+<span class="normal"><a href="#__codelineno-11-37">37</a></span>
+<span class="normal"><a href="#__codelineno-11-38">38</a></span>
+<span class="normal"><a href="#__codelineno-11-39">39</a></span>
+<span class="normal"><a href="#__codelineno-11-40">40</a></span>
+<span class="normal"><a href="#__codelineno-11-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"course/symfony-examples"</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The 28 examples of the course [Step-by-step introduction to the Symfony web framework]: a single vendor folder, shared by all the examples"</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project"</span><span class="p">,</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">    </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">        </span><span class="nt">"php"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=8.4"</span><span class="p">,</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">        </span><span class="nt">"ext-intl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">        </span><span class="nt">"ext-pdo_mysql"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">        </span><span class="nt">"doctrine/doctrine-bundle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.3"</span><span class="p">,</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">        </span><span class="nt">"doctrine/orm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.7"</span><span class="p">,</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">        </span><span class="nt">"firebase/php-jwt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^7.2"</span><span class="p">,</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">        </span><span class="nt">"symfony/asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">        </span><span class="nt">"symfony/console"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="w">        </span><span class="nt">"symfony/dotenv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="w">        </span><span class="nt">"symfony/form"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">        </span><span class="nt">"symfony/framework-bundle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">        </span><span class="nt">"symfony/intl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="w">        </span><span class="nt">"symfony/lock"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="w">        </span><span class="nt">"symfony/rate-limiter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="w">        </span><span class="nt">"symfony/security-bundle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">        </span><span class="nt">"symfony/serializer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="w">        </span><span class="nt">"symfony/translation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="w">        </span><span class="nt">"symfony/twig-bundle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="w">        </span><span class="nt">"symfony/validator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="w">        </span><span class="nt">"symfony/yaml"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.1"</span><span class="p">,</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a><span class="w">        </span><span class="nt">"twig/intl-extra"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.30"</span><span class="p">,</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a><span class="w">        </span><span class="nt">"twig/twig"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.30"</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30"></a><span class="w">    </span><span class="nt">"autoload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31"></a><span class="w">        </span><span class="nt">"psr-4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32"></a><span class="w">            </span><span class="nt">"Common\\"</span><span class="p">:</span><span class="w"> </span><span class="s2">"common/"</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35"></a><span class="w">    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-36" name="__codelineno-11-36"></a><span class="w">        </span><span class="nt">"optimize-autoloader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37"></a><span class="w">        </span><span class="nt">"sort-packages"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-11-38" name="__codelineno-11-38"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39"></a><span class="w">    </span><span class="nt">"minimum-stability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stable"</span><span class="p">,</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40"></a><span class="w">    </span><span class="nt">"prefer-stable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 6–29 行：示例所需的内容：<em>[PHP]</em> 8.4 或更高版本，扩展 <strong><em>[intl]</em></strong> （按语言区域格式化数字和日期，示例 16）和 <strong><em>[pdo_mysql]</em></strong>（访问 <em>[MySQL]</em>，示例 28），随后按字母顺序列出各个库：<em>[Doctrine]</em> （示例 28）、<em>[firebase/php-jwt]</em> （JWT 令牌，示例 25），以及示例所用的 <em>[Symfony]</em> 组件和 Bundle。<strong><em>[^8.1]</em></strong> 的含义是“8.1 版本，或者主版本 8 之内更新的版本”；</li>
+<li>第 30–34 行：<strong><em>[Common]</em></strong> 命名空间中的类位于 <strong><em>[common]</em></strong> 文件夹中（PSR-4 规则，见示例 01）：这是为 <em>[Bootstrap]</em> 提供服务的共享控制器（示例 15）；</li>
+<li>其余各行配置 <em>[Composer]</em> 的行为：类加载器经过优化，库按名称排序，并且只接受稳定版本。</li>
+</ul>
+<p>要运行这些示例，首先要在打开到 <strong><em>[examples]</em></strong> 文件夹的终端窗口中一次性安装它们的库：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>composer install
+</code></pre></div></td></tr></table></div>
+<p><em>[Composer]</em> 会创建 <strong><em>[examples/vendor]</em></strong> 文件夹，该文件夹<strong>由全部 28 个示例共享</strong>，以及 <strong><em>[composer.lock]</em></strong> 文件，其中记录了所安装的确切版本（见案例研究）。<strong><em>[common]</em></strong> 文件夹包含 CSS 框架 <em>[Bootstrap]</em>（<strong><em>[common/bootstrap]</em></strong>）——由对页面进行格式化的示例共享（从示例 15 开始）——以及为其提供服务的控制器（<strong><em>[common/BootstrapController.php]</em></strong>；见示例 15）。</p>
+<p>几乎所有示例都具有相同的结构——即标准 <em>[Symfony]</em> 应用精简到只剩要点后的结构。例如示例 13 中的这个：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span>
+<span class="normal"><a href="#__codelineno-13-21">21</a></span>
+<span class="normal"><a href="#__codelineno-13-22">22</a></span>
+<span class="normal"><a href="#__codelineno-13-23">23</a></span>
+<span class="normal"><a href="#__codelineno-13-24">24</a></span>
+<span class="normal"><a href="#__codelineno-13-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>13-first-view/
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>├── bin/
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>│   └── console
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>├── config/
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>│   ├── packages/
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>│   │   ├── framework.yaml
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>│   │   └── twig.yaml
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a>│   ├── bundles.php
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>│   ├── routes.yaml
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a>│   └── services.yaml
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a>├── public/
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a>│   └── index.php
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a>├── src/
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a>│   ├── Controller/
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a>│   │   └── ViewsController.php
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a>│   ├── Model/
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a>│   │   └── PageModel.php
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a>│   └── Kernel.php
+<a id="__codelineno-13-19" name="__codelineno-13-19"></a>├── templates/
+<a id="__codelineno-13-20" name="__codelineno-13-20"></a>│   └── views/
+<a id="__codelineno-13-21" name="__codelineno-13-21"></a>│       ├── unknown.html.twig
+<a id="__codelineno-13-22" name="__codelineno-13-22"></a>│       └── index.html.twig
+<a id="__codelineno-13-23" name="__codelineno-13-23"></a>├── var/
+<a id="__codelineno-13-24" name="__codelineno-13-24"></a>├── .env
+<a id="__codelineno-13-25" name="__codelineno-13-25"></a>└── composer.json
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong><em>[public/index.php]</em></strong>：所有请求的入口点；<strong><em>[src/Kernel.php]</em></strong>：应用内核；<strong><em>[bin/console]</em></strong>：<em>[Symfony]</em> 的命令行工具（示例 01）；</li>
+<li><strong><em>[config]</em></strong>：配置：应用的 Bundle（<strong><em>[bundles.php]</em></strong>）、每个 Bundle 的配置（文件夹 <strong><em>[packages]</em></strong>）、路由（<strong><em>[routes.yaml]</em></strong>，示例 02）、服务（<strong><em>[services.yaml]</em></strong>，示例 06）；</li>
+<li><strong><em>[src]</em></strong>：应用的类：控制器（<strong><em>[src/Controller]</em></strong>）、模型、服务等；</li>
+<li><strong><em>[templates]</em></strong>：<em>[Twig]</em> 视图（从视图一章开始）；</li>
+<li><strong><em>[.env]</em></strong>：该示例特有的设置（示例 01）；<strong><em>[var]</em></strong>：<em>[Symfony]</em> 自己写入的文件（缓存、会话）。</li>
+</ul>
+<p>要运行一个示例，请在其文件夹中打开一个终端（在 <em>[Visual Studio Code]</em> 中：右键单击示例文件夹，然后选择“Open in Integrated Terminal”），并输入：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>php -S localhost:8000 -t public
+</code></pre></div></td></tr></table></div>
+<p>所有示例都监听 8000 端口：同一时间只能运行一个（或者必须更改端口：<strong><em>[php -S localhost:8001 -t public]</em></strong>）。在终端中使用 <strong><em>[Ctrl-C]</em></strong> 停止服务器。修改 <em>[PHP]</em> 文件、视图或配置之后无需重启服务器：更改会在下一个请求时生效（示例 01）。</p>
+<p>当你在 <strong><em>[examples]</em></strong> 文件夹中用 <em>[Visual Studio Code]</em> 打开项目时，<em>[PHP Intelephense]</em> 扩展会分析所有文件，包括 <em>[Symfony]</em> 位于 <strong><em>[vendor]</em></strong> 文件夹中的文件：在每个文件中，你都可以使用代码补全、跳转到类或方法的定义（<strong><em>[F12]</em></strong> 键）以及错误提示。由于所有示例的类都在 <strong><em>[App]</em></strong> 命名空间中，扩展可能会标记“重复”的类：这对执行没有影响，因为每个示例都独立运行。要避免这些警告，只需打开示例自己的文件夹即可。</p>
+<h2 id="15-文档内容">1.5. <span style="color: #2e74b5">文档内容</span></h2>
+<p>文档的组织结构如下：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">动作、路由、响应</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">从请求到动作：路由、控制器、响应、重定向、共享服务</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">01 至 06</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">动作模型</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">请求参数：绑定、转换、验证、POST 请求</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">07 至 12</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">视图及其模板</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Twig]</i>、模板、宏、<i>[Symfony]</i> 表单、验证、PRG、防 CSRF 保护</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">13 至 21</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">国际化</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">一个法语和英语的应用</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">22</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">数据作用域</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">请求、会话、缓存、Cookie</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">23</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">请求的生命周期</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">内核事件、参数解析器、异常处理</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">24</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">身份验证和授权</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">防火墙、存放在 Cookie 中的 JWT 身份验证器、角色、验证码（CAPTCHA）、尝试次数限制</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">25–27</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">分层架构和数据访问</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">使用 <i>[Doctrine] </i>和 <i>[MySQL]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">28</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">案例研究</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">RdvMedecins 应用，逐文件讲解</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">-</div></td></tr></table>
+
+<p>每个示例只引入少量新概念，各章环环相扣：最好按顺序阅读。而案例研究则运用了<strong>前面各章的</strong>所有概念：只要相关，它的说明都会指回该概念被引入的那个示例。附录介绍了如何安装这些工具：<em>[PHP]</em>、<em>[Composer]</em>、<em>[Visual Studio Code]</em> 及其扩展、<em>[MySQL]</em> 以及 <em>[Laragon]</em>、<em>[curl]</em> 和 <strong><em>[symfony]</em></strong> 工具。</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        本教程由 Anthropic 的 AI <strong>Claude</strong> 应 <strong>Serge Tahé</strong> 的请求编写，根据
+        <em>知识共享署名 – 非商业性使用 –
+        共享 3.0 未本地化版</em>的条款向公众开放。
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
